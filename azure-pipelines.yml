@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# Tell you what branch you are watching
+trigger:
+- master
+
+pool: 
+  vmImage: 'ubuntu-latest'
+
+variables:
+  -name: 'instructor'
+  value: 'Mark'
+
+# Watch of PR's
+pr: 'none'
+
+# groups of sequential action
+stages:
+  - stage:
+    jobs:
+      - job: 'build'
+        steps:
+          - script: 'dotnet build'
+          - script: echo Hey there $(instructor)!
+
+      - job: 'test'
+        dependsOn: 'build'
+        steps:
+          - script: 'dotnet test'
+          
+      - job: 'publish'
+        dependsOn: 'test'
+        steps:
+          - script: 'dotnet publish'
+
+name: '$(date:yyyyMMdd)$(rev:rr)'
