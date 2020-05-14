@@ -25,14 +25,12 @@ stages:
         steps:
           - script: 'dotnet build'
           - script: echo Hey there $(instructor)!
-  - stage:
-    jobs:
+
       - job: 'test'
         dependsOn: 'build'
         steps:
           - script: 'dotnet test'
-  - stage:
-    jobs:
+          
       - job: 'publish'
         dependsOn: 'test'
         steps:
