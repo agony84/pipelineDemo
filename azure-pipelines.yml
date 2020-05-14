@@ -29,7 +29,7 @@ stages:
       - job: 'test'
         dependsOn: 'build'
         steps:
-          - script: 'dotnet test'
+          - script: dotnet test 'pipelineMVCDemo/pipelineMVCDemo.csproj'
           
       - job: 'publish'
         dependsOn: 'test'
