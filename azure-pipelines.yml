@@ -34,6 +34,6 @@ stages:
       - job: 'publish'
         dependsOn: 'test'
         steps:
-          - script: 'dotnet publish'
+          - script: dotnet publish 'pipelineMVCDemo/pipelineMVCDemo.csproj'
 
 name: '$(date:yyyyMMdd)$(rev:rr)'
