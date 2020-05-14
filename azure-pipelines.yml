@@ -7,7 +7,7 @@
 trigger:
 - master
 
-Pool: 
+pool: 
   vmImage: 'ubuntu-latest'
 
 variables:
